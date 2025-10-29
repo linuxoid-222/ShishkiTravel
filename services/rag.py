@@ -1,4 +1,4 @@
-# rag.py — RAG-only, индекс стран и городов, MMR, фильтры по метаданным
+
 from __future__ import annotations
 
 import os
@@ -9,12 +9,12 @@ from langchain_community.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.docstore.document import Document
 
-# Папка для персистентного индекса
+
 CHROMA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "chroma_rag")
 _VECTORDB: Chroma | None = None
 
-# Нужна только для чтения локальной БД (и канонизации в других частях проекта)
-from travel_bot.services.knowledge_base import _ensure_kb_loaded  # noqa
+
+from travel_bot.services.knowledge_base import _ensure_kb_loaded  
 
 
 def embed_knowledge_base() -> None:
@@ -37,7 +37,7 @@ def embed_knowledge_base() -> None:
                     metadata={"country": country, "city": None, "section": section},
                 ))
 
-        # Городские поля
+
         cities = info.get("cities") or {}
         if isinstance(cities, dict):
             for city, cdata in cities.items():
@@ -71,7 +71,7 @@ def _get_vectordb() -> Chroma:
         embedding_function=embedder,
     )
 
-    # Если коллекция пустая — построим индекс и загрузим заново
+
     try:
         count = _VECTORDB._collection.count()
     except Exception:
@@ -97,9 +97,6 @@ def retrieve_advanced(
     section_filter: Optional[List[str]] = None,
 ) -> List[Document]:
     """
-    Продвинутый ретривер: MMR для разнообразия + простые метаданные-фильтры (country/city/section).
-    Возвращает список Documents (page_content + metadata).
-
     section_filter: если указан, ограничивает выдачу конкретными разделами (напр. ["culture", "attractions"]).
     """
     db = _get_vectordb()
