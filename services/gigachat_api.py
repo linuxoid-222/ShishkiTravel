@@ -57,6 +57,5 @@ class GigaChatClient:
             return f"Ошибка при вызове GigaChat: {exc}"
 
 
-# Expose a default instance for convenience. Users can import gigachat
-# directly from this module rather than instantiating GigaChatClient.
+
 gigachat = GigaChatClient()
