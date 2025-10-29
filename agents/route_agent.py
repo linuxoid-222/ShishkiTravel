@@ -44,7 +44,7 @@ class RouteAgent(BaseAgent):
             except Exception:
                 result["content"] = raw_text
         else:
-            # Graceful fallback: no route computed
+
             result["content"] = (
                 f"Не удалось построить маршрут между {origin} и {destination}. "
                 "Возможно, сервис маршрутов временно недоступен."
