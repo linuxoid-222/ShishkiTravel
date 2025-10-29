@@ -1,0 +1,16 @@
+pyTelegramBotAPI==4.29.1
+python-dotenv==1.0.1
+requests==2.32.3
+pydantic==2.9.2
+googlemaps==4.10.0
+rapidfuzz==3.9.7
+duckdb==1.1.3
+sqlite-utils==3.37
+
+# Dependencies for LangChain and retrieval-augmented generation. These
+# packages provide the LangChain framework, a local vector store (Chroma)
+# and a sentence-transformer model for generating text embeddings. If you
+# plan to enable RAG functionality, install these as well.
+langchain==0.3.8
+chromadb==0.4.22
+sentence-transformers==2.2.2
