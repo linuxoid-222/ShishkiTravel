@@ -1,9 +1,3 @@
-"""Tourist agent for the travel bot.
-
-The tourist agent provides cultural insights, attractions and (optionally)
-weather for a specified city. It pulls data from the local knowledge base and
-can enrich with RAG, then formats via LLM (without dropping details).
-"""
 
 from __future__ import annotations
 
@@ -18,12 +12,12 @@ from travel_bot.services.knowledge_base import (
 from travel_bot.services.external_apis import get_weather
 from travel_bot.services.gigachat_api import gigachat
 
-# Optional RAG retriever (local-only enrichment). If deps are missing, skip gracefully.
+
 try:
     from travel_bot.services.rag import retrieve as _rag_retrieve
-    RAG_RETRIEVER = _rag_retrieve  # type: ignore
+    RAG_RETRIEVER = _rag_retrieve 
 except Exception:
-    RAG_RETRIEVER = None  # type: ignore
+    RAG_RETRIEVER = None  
 
 
 class TouristAgent(BaseAgent):
@@ -32,7 +26,7 @@ class TouristAgent(BaseAgent):
     name = "tourism"
 
     def answer(self, query: str, context: Dict[str, Any]) -> AgentResult:
-        # Determine the country and city from context or by fuzzy matching.
+
         country = context.get("country") or find_country_key(query or "")
         city = context.get("city")
         result = AgentResult(type=self.name, content="")
@@ -59,7 +53,7 @@ class TouristAgent(BaseAgent):
                 parts.append(f"Город {city} — что посмотреть: {city_secs['attractions']}")
 
         # -----------------------------
-        # 3) Погода по городу (опционально)
+        # 3) Погода по городу 
         # -----------------------------
         if city:
             weather = get_weather(city)
@@ -67,7 +61,7 @@ class TouristAgent(BaseAgent):
                 parts.append(f"Погода в {city}: {weather}")
 
         # -----------------------------
-        # 4) (опц.) RAG-добавка и LLM-оформление (без сокращений)
+        # 4) RAG
         # -----------------------------
         if parts:
             # Дополнить локальным RAG (если доступен)
@@ -82,7 +76,7 @@ class TouristAgent(BaseAgent):
 
             raw_text = "\n".join(parts)
 
-            # LLM — не сокращать и ничего не опускать, только упорядочить/оформить.
+
             try:
                 messages = [
                     {
