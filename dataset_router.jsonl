@@ -1,0 +1,7 @@
+{"id": "r1", "text": "Париж на 4 дня. Что посмотреть?", "expected": {"needs": ["tourism"], "city": "Париж", "country": "Франция"}}
+{"id": "r2", "text": "Еду в Токио на неделю — нужна ли виза?", "expected": {"needs": ["tourism", "legal"], "city": "Токио", "country": "Япония"}}
+{"id": "r3", "text": "Еду в Токио на 5 дней: что посмотреть, нужна ли виза и какая погода?", "expected": {"needs": ["tourism", "legal", "weather"], "city": "Токио", "country": "Япония"}}
+{"id": "r4", "text": "Хочу маршрут из Амстердама в Париж на машине", "expected": {"needs": ["route"], "start_location": "Амстердам", "end_location": "Париж"}}
+{"id": "r5", "text": "Барселона на 3 дня, посоветуй места и районы", "expected": {"needs": ["tourism"], "city": "Барселона", "country": "Испания"}}
+{"id": "r6", "text": "Какая погода завтра в Риме?", "expected": {"needs": ["weather"], "city": "Рим", "country": "Италия"}}
+{"id": "r7", "text": "Какие законы и штрафы для туристов в ОАЭ?", "expected": {"needs": ["legal"], "country": "ОАЭ"}}
