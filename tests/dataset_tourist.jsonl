@@ -1,0 +1,3 @@
+{"id": "t1", "country": "Франция", "city": "Париж", "dates": "на 4 дня", "question": "Еду в Париж на 4 дня. Что посмотреть?", "expect": {"food": false, "plan": true, "highlights_min": 5, "ru": true}}
+{"id": "t2", "country": "Япония", "city": "Токио", "dates": "на неделю", "question": "Еду в Токио на неделю: что посмотреть и где поесть?", "expect": {"food": true, "plan": true, "highlights_min": 5, "ru": true}}
+{"id": "t3", "country": "Нидерланды", "city": "Амстердам", "dates": "на 2 дня", "question": "Амстердам на 2 дня — топ мест и советы по районам", "expect": {"food": false, "plan": true, "highlights_min": 4, "ru": true}}
